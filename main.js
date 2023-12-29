@@ -1,23 +1,19 @@
-const customAnimation = [
+const aliceTumbling = [
   { transform: 'rotate(0) scale(1)' },
   { transform: 'rotate(360deg) scale(0)' }
 ];
 
-const animationSettings = {
-  duration: 2000,
+const aliceTiming = {
+  duration: 700,
   iterations: 1,
   fill: 'forwards'
-};
+}
 
-const selectAlice = (id) => document.querySelector(`#${id}`);
+const alice1 = document.querySelector("#alice1");
+const alice2 = document.querySelector("#alice2");
+const alice3 = document.querySelector("#alice3");
 
-const alice1 = selectAlice("alice1");
-const alice2 = selectAlice("alice2");
-const alice3 = selectAlice("alice3");
-
-const applyAnimation = (element, animation, settings) => element.animate(animation, settings).finished;
-
-applyAnimation(alice1, customAnimation, animationSettings)
-  .then(() => applyAnimation(alice2, customAnimation, animationSettings))
-  .then(() => applyAnimation(alice3, customAnimation, animationSettings))
+alice1.animate(aliceTumbling, aliceTiming).finished
+  .then(() => alice2.animate(aliceTumbling, aliceTiming).finished)
+  .then(() => alice3.animate(aliceTumbling, aliceTiming).finished)
   .catch(error => console.error(`Error animating Alices: ${error}`));
